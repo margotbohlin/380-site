@@ -1,9 +1,19 @@
-body {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <footer style="position: fixed; bottom: 0; width: 100%; background-color: #7c84cc; text-align: center; padding: 5px; font-size: 14px; color: rgb(255, 255, 255)">
+    Created by Margot Bohlin, Sanyukta Lamsal, and Pascale Paul
+  </footer>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Privacy Isn't Private</title>
+  <style>
+    body {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    background-color: #0004eb;
+    background-color: #7BAFD4;
     color: #333;
   }
   
@@ -16,6 +26,11 @@ body {
       font-size: 30px;
       padding: 6rem;
       text-align: center;
+      text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
   }
   
   nav ul {
@@ -23,7 +38,7 @@ body {
     display: flex;
     justify-content: center;
     padding: 0;
-    font-size: 20px;
+    font-size: 25px;
   }
   
   nav li {
@@ -53,9 +68,9 @@ body {
   
   section {
     text-align: center;
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto;
-    font-size: 20px;
+    font-size: 30px;
   }
   
   section p, section h2, section ul, section div {
@@ -70,3 +85,845 @@ body {
     display: block;
   }
 
+  /* Quiz Styling */
+  .quiz-container {
+    max-width: 800px;
+    margin: 2em auto;
+    background-color: #f0f8ff;
+    padding: 1.5em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .quiz-question {
+    margin-bottom: 1.5em;
+    padding: 1em;
+    background-color: white;
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  .quiz-options {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .quiz-options li {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #e9f5ff;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .quiz-options li:hover {
+    background-color: #d0e8ff;
+  }
+
+  .quiz-options li.selected {
+    background-color: #007acc;
+    color: white;
+  }
+
+  .quiz-options li.correct {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .quiz-options li.incorrect {
+    background-color: #f44336;
+    color: white;
+  }
+
+  .submit-quiz {
+    background-color: #007acc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+
+  .submit-quiz:hover {
+    background-color: #005fa3;
+  }
+
+  .results-container {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #e9f5ff;
+    display: none;
+  }
+
+  /* Matching Quiz Styling */
+#matchQuiz {
+  background-color: #fefefe;
+  padding: 1.5em;
+  margin-top: 2em;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+}
+
+.match-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5em;
+}
+
+.match-row label {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  color: #2c3e50;
+}
+
+.match-row select {
+  padding: 0.6em;
+  font-size: 1em;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s;
+}
+
+.match-row select:focus {
+  outline: none;
+  border-color: #007acc;
+  box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+}
+
+.submit-btn {
+  background-color: #007acc;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1em;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: block;
+  margin: 1em auto 0 auto;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #005fa3;
+}
+
+#result {
+  margin-top: 1em;
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.1em;
+}
+.correct {
+  color: #4CAF50;
+}
+.incorrect {
+  color: #f44336;
+}
+
+  
+  </style>
+</head>
+<body>
+  <header>
+    <h1>The Algorithm is Watching</h1>
+    <nav>
+      <ul>
+        <li><a href="#" data-tab="audience">Who Is Our Audience?</a></li>
+        <li><a href="#" data-tab="datause">Where is Your Data Going?</a></li>
+        <li><a href="#" data-tab="profit">Capitalistic Gain</a></li>
+        <li><a href="#" data-tab="harm">Doxxing & Exploitation</a></li>
+        <li><a href="#" data-tab="solutions">Protect Your Privacy</a></li>
+        <li><a href="#" data-tab="survey">Privacy Survey</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div style="padding-bottom: 50px;">
+  
+
+  <section id="audience" class="tab-section">
+    <h2>Who Is Our Audience?</h2>
+    <p>Teenagers today are among the most active social media users, often engaging with platforms that encourage frequent sharing of personal details. This openness is influenced not only by the features of emerging apps but also by shifting cultural norms around visibility and self-expression online. As teens adopt new technologies, they tend to share more without fully understanding the long-term implications of their digital footprints <a href = https://www.pewresearch.org/internet/2013/05/21/teens-social-media-and-privacy>[3]</a>. Many privacy laws don't fully protect users over the age of 13, and because teens are so active online, advertisers and tech companies see them as prime targets. Our goal is to raise awareness, explain the risks, and share a few ways to take back control of your online privacy.</p>
+
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Social Media Use by Age Group</title>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    </head>
+    <body>
+      <a href= "https://www.pewresearch.org/internet/fact-sheet/social-media/"> <h2 style="text-align:center;">Social Media Platform Usage by Age Group (2024)</h2></a>
+      <canvas id="socialMediaChart" width="800" height="400"></canvas>
+    
+      <script>
+        const data = {
+          labels: ['Facebook', 'Instagram', 'LinkedIn', 'X (Twitter)', 'Pinterest', 'Snapchat', 'YouTube', 'WhatsApp', 'Reddit', 'TikTok', 'BeReal'],
+          datasets: [
+            {
+              label: 'Ages 18-29',
+              data: [68, 76, 40, 38, 43, 65, 93, 30, 46, 59, 10],
+              backgroundColor: 'rgba(255, 99, 132, 0.6)'
+            },
+            {
+              label: 'Ages 30-49',
+              data: [78, 66, 41, 25, 43, 32, 94, 40, 35, 40, 2],
+              backgroundColor: 'rgba(54, 162, 235, 0.6)'
+            },
+            {
+              label: 'Ages 50-64',
+              data: [70, 36, 30, 15, 33, 14, 86, 28, 11, 26, 1],
+              backgroundColor: 'rgba(255, 206, 86, 0.6)'
+            },
+            {
+              label: 'Ages 65+',
+              data: [59, 19, 15, 8, 22, 4, 65, 18, 4, 10, 0.5],
+              backgroundColor: 'rgba(75, 192, 192, 0.6)'
+            }
+          ]
+        };
+    
+        const config = {
+          type: 'bar',
+          data: data,
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Percentage of U.S. Adults Using Each Platform by Age Group'
+              },
+              tooltip: {
+                mode: 'index',
+                intersect: false
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                max: 100,
+                title: {
+                  display: true,
+                  text: 'Percentage (%)'
+                }
+              }
+            }
+          },
+        };
+    
+        new Chart(
+          document.getElementById('socialMediaChart'),
+          config
+        );
+      </script>
+    </body>
+  </section>
+
+  <section id="datause" class="tab-section">
+    <h2>Where is Your Data Going?</h2>
+    <p>
+      Once teens start using social media, their personal information is on full display. Every like, comment, photo upload, and search contributes to a growing digital profile. This data becomes vulnerable to misuse not only by the platform itself but also by third-party advertisers. One key concern is data harvesting, which can be described as the large-scale collection and analysis of user information, often without explicit consent. This can include personal details like age, location, interests, habits, device info, and browsing history. These profiles are then used to build sophisticated targeting algorithms, allowing companies to tailor ads that are eerily specific, sometimes manipulating user behavior or emotions. Teens, in particular, may not realize that what feels like a harmless or entertaining experience is actually feeding an invisible surveillance infrastructure. Their data can be used not just for selling products, but also for influencing political views, shaping online experiences, and feeding into broader databases accessed by the government, advertising agencies, market research firms, and of course, the social media platform itself, such as Facebook
+      <a href="https://www.researchgate.net/publication/290576076_Facebook_as_a_Surveillance_Tool_From_the_Perspective_of_the_User">[1]</a>.
+    </p>
+  
+    <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 20px;">
+      <!-- Pointer Text (now on the left) -->
+      <div id="adTextPrompt" style="width: 250px; font-style: italic; font-size: 18px; color: #000000; text-align: right;">
+        Click here for an <strong>(overexaggerated)</strong> demo of what data surveillance can do to your online roaming ->
+      </div>
+    
+      <!-- Image (on the right) -->
+      <img
+        src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/6c/7d/56/6c7d567e-acb0-ba2c-845c-14c07c00af48/64ea1eb9-2fc4-482a-87f7-848e56b353e7_05_TRT01112_FullGrid.Board.WaveCTA_VER_v2_2048_2732_LNG_EN.png/643x0w.jpg"
+        alt="Game Ad"
+        id="mainAd"
+        style="cursor: pointer; width: 300px; height: auto;"
+      />
+    </div>
+  
+    <!-- Clear Ads Button -->
+    <button id="clearAdsBtn" style="display: none; position: fixed; top: 20px; right: 20px; z-index: 2000; padding: 10px 15px; background: rgb(135, 120, 216); color: white; border: none; border-radius: 5px; cursor: pointer;">
+      Clear Ads
+    </button>
+  
+    <!-- Container for Random Ads -->
+    <div id="adContainer" style="position: relative; z-index: 1000;"></div>
+  
+    <script>
+      const mainAd = document.getElementById("mainAd");
+      const adContainer = document.getElementById("adContainer");
+      const clearAdsBtn = document.getElementById("clearAdsBtn");
+  
+      mainAd.addEventListener("click", function () {
+        // Clear existing ads before adding new ones
+        adContainer.innerHTML = "";
+  
+        for (let i = 0; i < 100; i++) {
+          const ad = document.createElement("img");
+          ad.src = "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/6c/7d/56/6c7d567e-acb0-ba2c-845c-14c07c00af48/64ea1eb9-2fc4-482a-87f7-848e56b353e7_05_TRT01112_FullGrid.Board.WaveCTA_VER_v2_2048_2732_LNG_EN.png/643x0w.jpg" + (i + 1);
+          ad.alt = "Game Ad " + (i + 1);
+          ad.style.position = "fixed";
+          ad.style.width = "150px";
+          ad.style.zIndex = "1000";
+          ad.style.cursor = "pointer";
+  
+          const x = Math.floor(Math.random() * (window.innerWidth - 160));
+          const y = Math.floor(Math.random() * (window.innerHeight - 160));
+          ad.style.left = x + "px";
+          ad.style.top = y + "px";
+  
+          adContainer.appendChild(ad);
+        }
+  
+        // Show the clear button
+        clearAdsBtn.style.display = "block";
+      });
+  
+      clearAdsBtn.addEventListener("click", function () {
+        adContainer.innerHTML = ""; // Remove all ads
+        clearAdsBtn.style.display = "none"; // Hide button again
+      });
+    </script>
+  </section>
+
+
+<section id="profit" class="tab-section">
+  <h2>Capitalistic Gain</h2>
+  
+  <p>Facebook is a great example of a platform that has turned user activity and personal data into a powerful engine for advertising revenue. Every interaction is tracked and analyzed, not just to improve the user experience, but to maximize profit through hyper-targeted ads. Companies like Facebook collect vast amounts of user information, often under the guise of improving services, using privacy policies and terms of service that are intentionally dense, vague, or long-winded. These documents are written in a way that makes it unlikely the average user, especially a teenager, fully understands what they’re consenting to. As a result, people routinely agree to surveillance they don’t understand. Users essentially are becoming unpaid laborers contributing to corporate profits by providing data, content, and engagement <a href = https://www.researchgate.net/publication/290576076_Facebook_as_a_Surveillance_Tool_From_the_Perspective_of_the_User>[1]</a>. The next time you use social media to seek travel advice or explore a destination, pay close attention to how quickly you're shown ads for airlines, local tours, or travel insurance. This likely is not coincidence, it is a demonstration of surveillance capitalism in action.</p>
+
+  <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.engadget.com%2F2014-04-17-terms-of-service-study-georgia-tech.html&psig=AOvVaw26e7tzYrxeb9Hi8WncthpV&ust=1746749364823000&source=images&cd=vfe&opi=89978449&ved=0CBcQjhxqFwoTCNjE-s3Kko0DFQAAAAAdAAAAABAt"><img
+      src="https://s.yimg.com/ny/api/res/1.2/oRVKL3VlB7EKxyLspiL1qw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTY0MDtoPTMzMg--/https://o.aolcdn.com/hss/storage/midas/31c71cbd1faebeece48633092079a7b6/200043141/tos_630pxhedimg_gatech.jpg"
+      alt="plain"
+      id="mainAd"
+      style="cursor: pointer; width: 800px; height: auto;"
+    /></a>
+  
+  <title>Capitalistic Gain Matching Quiz</title>
+
+  <h3>Match the Terms to Their Definitions</h3>
+
+  <form id="matchQuiz">
+    <div class="match-row">
+      <label for="term1">Facebook</label>
+      <select id="term1" name="term1">
+        <option value="">-- Select a definition --</option>
+        <option value="a">Users unknowingly provide data that is used for targeting ads</option>
+        <option value="b">A social media platform that monetizes user behavior</option>
+        <option value="c">Legal text that disguises true data usage intentions</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <label for="term2">Privacy Policies</label>
+      <select id="term2" name="term2">
+        <option value="">-- Select a definition --</option>
+        <option value="a">Users unknowingly provide data that is used for targeting ads</option>
+        <option value="b">A social media platform that monetizes user behavior</option>
+        <option value="c">Legal text that disguises true data usage intentions</option>
+      </select>
+    </div>
+
+    <div class="match-row">
+      <label for="term3">"Unpaid Labor" in the digital world</label>
+      <select id="term3" name="term3">
+        <option value="">-- Select a definition --</option>
+        <option value="a">Users unknowingly provide data that is used for targeting ads</option>
+        <option value="b">A social media platform that monetizes user behavior</option>
+        <option value="c">Legal text that disguises true data usage intentions</option>
+      </select>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+    <div id="result"></div>
+  </form>
+
+  <script>
+    document.getElementById("matchQuiz").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const answers = {
+        term1: "b", // Facebook
+        term2: "c", // Privacy Policies
+        term3: "a"  // Unpaid Labor
+      };
+
+      const userAnswers = {
+        term1: document.getElementById("term1").value,
+        term2: document.getElementById("term2").value,
+        term3: document.getElementById("term3").value
+      };
+
+      const allCorrect = Object.keys(answers).every(key => answers[key] === userAnswers[key]);
+
+      const resultEl = document.getElementById("result");
+      if (allCorrect) {
+        resultEl.textContent = "✅ Correct! Great job.";
+        resultEl.className = "correct";
+      } else {
+        resultEl.textContent = "❌ One or more answers are incorrect. Try again!";
+        resultEl.className = "incorrect";
+      }
+    });
+  </script>
+  
+</section>
+
+  <section id="harm" class="tab-section">
+    <h2>Harm: Doxxing & Exploitation</h2>
+    <p>Monetary gain is not the only objective for social media platforms. Beyond targeted advertising and corporate profit, these platforms facilitate the vast circulation of personal information, muchof which users share without fully considering the consequences. Details such as age, gender, location, photos, and interests may seem harmless in isolation, but when combined, they form a comprehensive digital footprint that can be exploited in unexpected and dangerous ways <a href = https://doi.org/10.1016/j.chb.2014.01.009 >[5]</a>. In some online communities, this personal data becomes a weapon. Doxxing is the act of publicly revealing private or identifying information about someone, and has become an increasingly common tactic used to intimidate, harass, or silence individuals <a href = https://www.emerald.com/insight/content/doi/10.1108/978-1-83982-848-520211015/full/html>[6]</a>. This can include anything from publishing a home address to leaking private messages or photos, often with malicious intent. While anyone can be a target, teens and other vulnerable groups are especially at risk, as they may be less equipped to recognize red flags or respond effectively when their privacy is breached.</p>
+    <div style="background:#fff8f0; padding: 20px; margin-top: 30px; border: 2px solid #e0b089; border-radius: 8px;">
+      <h3>Quick Check: What would you do?</h3>
+      <p>You see someone posting another user's home address on Instagram. What should you do?</p>
+    
+      <form id="safetyQuiz">
+        <label><input type="radio" name="choice" value="a"> Ignore it — it’s not my problem</label><br>
+        <label><input type="radio" name="choice" value="b"> Share it to let more people know</label><br>
+        <label><input type="radio" name="choice" value="c"> Report the post to the platform</label><br><br>
+    
+        <button type="submit">Submit Answer</button>
+        <p id="safetyFeedback" style="font-weight:bold; margin-top:10px;"></p>
+      </form>
+    </div>
+    
+    <script>
+      document.getElementById("safetyQuiz").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const choice = document.querySelector('input[name="choice"]:checked');
+        const feedback = document.getElementById("safetyFeedback");
+    
+        if (!choice) {
+          feedback.textContent = "Please select an option before submitting.";
+          feedback.style.color = "red";
+          return;
+        }
+    
+        if (choice.value === "c") {
+          feedback.textContent = "✅ Correct! Reporting doxxing helps protect others and prevent harm.";
+          feedback.style.color = "green";
+        } else {
+          feedback.textContent = "❌ Not quite. The best course of action is to report the post to the platform.";
+          feedback.style.color = "red";
+        }
+      });
+    </script>
+    <p><a href= "https://www.ranker.com/list/celebrities-who-have-been-doxed/anncasano">Below</a> are three examples of big-time celebrities who have been doxxed as a result of their activity on social media platforms. With the rapid rise of platforms like TikTok, this issue has expanded beyond celebrities, increasingly affecting teenagers and even young children.</p>
+    <img
+      src="https://cdn.britannica.com/42/184142-050-5B50BDC2/Kim-Kardashian-2008.jpg"
+      alt="plain"
+      id="celeb"
+      style="cursor: pointer; width: auto; height: 400px;"
+    />
+    <img
+      src="https://people.com/thmb/3FvUtTzqOzc39aMU-NC3TBF496g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(770x275:772x277)/Jay-Z-Beyonce-121123-9edc792f1a9e4dca94ecd1dd6b7456cb.jpg"
+      alt="plain"
+      id="celeb"
+      style="cursor: pointer; width: 400px; height: auto;"
+    />
+    
+    <img
+      src="https://13wham.com/resources/media2/16x9/1024/986/0x55/90/4a00ee75-e85a-46c2-a591-66d59189d778-AP25014565132913.jpg"
+      alt="plain"
+      id="celeb"
+      style="cursor: pointer; width: 600px; height: auto;"
+    />
+    
+  </section>
+
+  <section id="solutions" class="tab-section">
+    <h2>How to Protect Your Privacy</h2>
+    <ul>
+      <li>
+        <strong>Data Education:</strong> Teens especially need to be taught early on to manage their digital presence. Schools and libraries should offer programs that teach students how to read privacy policies, use privacy settings effectively, and recognize suspicious links or phishing attempts. These programs should be integrated into digital literacy curriculums and updated regularly to reflect the rapidly evolving tech landscape <a href = https://pmc.ncbi.nlm.nih.gov/articles/PMC10008070>[2]</a>. At UNC we see these attacks regularly through spam emails coming from sources outside of the organization.
+      </li>
+      <li>
+        <strong>Research Guidelines:</strong> Beyond individual users, institutions also play a key role in protecting personal data. Researchers and social media legal teams must develop clear guidelines for handling networked data that contains personally identifiable information (addresses, security questions, birthdays, etc.). As more research involves social media platforms and online behaviors, it's essential to have shared ethical standards and transparent procedures for data collection, consent, and storage <a href = https://www.researchgate.net/publication/269589758_What_Your_Tweets_Tell_Us_About_You_Identity_Ownership_and_Privacy_of_Twitter_Data>[4]</a>.
+      </li>
+      <li>
+        <strong>Ad-Blockers/Further Technology Development:</strong> Developers and engineers can help shift the balance from harm to good by creating apps and browser extensions that limit tracking or alert users when their data is being collected. One example could be a browser plugin that flags when a site is sharing your location or a "privacy score" tool that rates apps before you download them. This would be a lot easier for teens to comprehend than having to read the fine print in platform terms and conditions.
+      </li>
+    </ul>
+
+    <div class="quiz-container">
+      <h3>Test Your Privacy Knowledge</h3>
+      
+      <div class="quiz-question">
+        <h4>1. What is "doxxing"?</h4>
+        <ul class="quiz-options" data-question="1">
+          <li data-answer="a">A. A type of computer virus that steals your data</li>
+          <li data-answer="b" data-correct="true">B. Publishing someone's private information to shame, harass, or discredit them</li>
+          <li data-answer="c">C. A technique used by social media platforms to encrypt your personal data</li>
+          <li data-answer="d">D. The practice of using VPNs to hide your online activity</li>
+        </ul>
+      </div>
+      
+      <div class="quiz-question">
+        <h4>2. Which of these is an effective way to protect your privacy online?</h4>
+        <ul class="quiz-options" data-question="2">
+          <li data-answer="a">A. Using the same password across all platforms for consistency</li>
+          <li data-answer="b">B. Accepting all cookies to improve your browsing experience</li>
+          <li data-answer="c">C. Sharing your location data with all your apps</li>
+          <li data-answer="d" data-correct="true">D. Using browser extensions that block tracking technologies</li>
+        </ul>
+      </div>
+      
+      <div class="quiz-question">
+        <h4>3. What is data harvesting?</h4>
+        <ul class="quiz-options" data-question="3">
+          <li data-answer="a" data-correct="true">A. Large-scale collection of personal data by companies or third parties</li>
+          <li data-answer="b">B. The process of backing up your files to the cloud</li>
+          <li data-answer="c">C. A method of protecting your digital files with encryption</li>
+          <li data-answer="d">D. Software that organizes your digital photos by date</li>
+        </ul>
+      </div>
+      
+      <button class="submit-quiz">Check Answers</button>
+      
+      <div class="results-container">
+        <h4>Your Results:</h4>
+        <p class="score-display">You got <span id="score">0</span> out of 3 correct!</p>
+        <div id="feedback"></div>
+      </div>
+    </div>
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const options = document.querySelectorAll('.quiz-options li');
+        const submitButton = document.querySelector('.submit-quiz');
+        const resultsContainer = document.querySelector('.results-container');
+        const scoreDisplay = document.getElementById('score');
+        const feedbackContainer = document.getElementById('feedback');
+        
+        // Allow selecting options
+        options.forEach(option => {
+          option.addEventListener('click', function() {
+            // Remove selected class from siblings
+            const siblings = this.parentElement.querySelectorAll('li');
+            siblings.forEach(sib => sib.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+          });
+        });
+        
+        // Check answers when submit button is clicked
+        submitButton.addEventListener('click', function() {
+          let score = 0;
+          const questionResults = {};
+          
+          // Check each question
+          document.querySelectorAll('.quiz-question').forEach(question => {
+            const questionNumber = question.querySelector('h4').textContent.split('.')[0];
+            const selectedOption = question.querySelector('.selected');
+            const correctOption = question.querySelector('[data-correct="true"]');
+            
+            // If no option selected, skip
+            if (!selectedOption) {
+              questionResults[questionNumber] = {
+                result: 'unanswered',
+                correct: correctOption.textContent
+              };
+              return;
+            }
+            
+            // Check if selected option is correct
+            if (selectedOption.dataset.correct === 'true') {
+              selectedOption.classList.add('correct');
+              score++;
+              questionResults[questionNumber] = {
+                result: 'correct',
+                selected: selectedOption.textContent
+              };
+            } else {
+              selectedOption.classList.add('incorrect');
+              correctOption.classList.add('correct');
+              questionResults[questionNumber] = {
+                result: 'incorrect',
+                selected: selectedOption.textContent,
+                correct: correctOption.textContent
+              };
+            }
+          });
+          
+          // Display score
+          scoreDisplay.textContent = score;
+          
+          // Generate feedback
+          feedbackContainer.innerHTML = '';
+          for (const [question, result] of Object.entries(questionResults)) {
+            const feedbackItem = document.createElement('p');
+            
+            if (result.result === 'unanswered') {
+              feedbackItem.innerHTML = `<strong>Question ${question}:</strong> Not answered. The correct answer is ${result.correct}`;
+            } else if (result.result === 'correct') {
+              feedbackItem.innerHTML = `<strong>Question ${question}:</strong> Correct!`;
+            } else {
+              feedbackItem.innerHTML = `<strong>Question ${question}:</strong> Incorrect. You selected "${result.selected.split('.')[1].trim()}" but the correct answer is "${result.correct.split('.')[1].trim()}"`;
+            }
+            
+            feedbackContainer.appendChild(feedbackItem);
+          }
+          
+          // Show results
+          resultsContainer.style.display = 'block';
+          
+          // Disable further changes
+          options.forEach(option => {
+            option.style.pointerEvents = 'none';
+          });
+          submitButton.disabled = true;
+        });
+      });
+    </script>
+  </section>
+
+  <section id="survey" class="tab-section">
+    <style>
+      #survey {
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f2f5f7;
+        padding: 2em;
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 2em auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+  
+      #survey h2 {
+        text-align: center;
+        color: #1a1a1a;
+        font-size: 2em;
+        margin-bottom: 1em;
+        font-weight: 600;
+      }
+  
+      #survey label {
+        display: block;
+        font-size: 1.1em;
+        margin-top: 1.5em;
+        color: #333;
+      }
+  
+      #survey select {
+        font-family: 'Times New Roman', Times, serif;
+        width: 100%;
+        padding: 0.7em;
+        font-size: 1em;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-top: 0.5em;
+        background-color: #fff;
+      }
+  
+      #survey select:focus {
+        border-color: #007acc;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 122, 204, 0.3);
+      }
+  
+      #survey input[type="submit"] {
+        margin-top: 2em;
+        width: 100%;
+        background-color: #007acc;
+        color: white;
+        font-size: 1.1em;
+        padding: 0.8em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+      #survey input[type="submit"]:hover {
+        background-color: #005fa3;
+        
+      }
+    </style>
+  
+  <section id="survey">
+    <h2>Interactive Privacy Survey</h2>
+    <form id="privacySurvey">
+      <label for="q1">Do you use social media?</label>
+      <select id="q1" name="q1">
+        <option value="">Select...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+  
+      <label for="q2">How often do you read the terms and conditions?</label>
+      <select id="q2" name="q2">
+        <option value="">Select...</option>
+        <option value="never">Never</option>
+        <option value="rarely">Rarely</option>
+        <option value="sometimes">Sometimes</option>
+        <option value="always">Always</option>
+      </select>
+  
+      <label for="q3">Have you seen ads related to things you've googled or talked about?</label>
+      <select id="q3" name="q3">
+        <option value="">Select...</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+      </select>
+  
+      <label for="q4">Average daily social media use:</label>
+      <select id="q4" name="q4">
+        <option value="">Select...</option>
+        <option value="less1">Less than 1 hour</option>
+        <option value="1-3">1–3 hours</option>
+        <option value="3-6">3–6 hours</option>
+        <option value="6+">More than 6 hours</option>
+      </select>
+  
+      <input type="submit" value="Submit" />
+    </form>
+  </section>
+  
+  <!-- ✅ Thank You Section (MOVED OUTSIDE the <form>) -->
+  <div id="thankYou" style="display: none; text-align: center; padding: 2em;">
+    <h2>Thank you for your submission!</h2>
+    <canvas id="chart1" width="300" height="300"></canvas>
+    <canvas id="chart2" width="300" height="300"></canvas>
+    <canvas id="chart3" width="300" height="300"></canvas>
+    <canvas id="chart4" width="300" height="300"></canvas>
+  </div>
+  
+
+  <!-- Chart.js Library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  // Track survey data in localStorage
+  const surveyData = JSON.parse(localStorage.getItem("surveyResults")) || {
+    q1: { yes: 0, no: 0 },
+    q2: { never: 0, rarely: 0, sometimes: 0, always: 0 },
+    q3: { yes: 0, no: 0 },
+    q4: { less1: 0, "1-3": 0, "3-6": 0, "6+": 0 },
+  };
+
+  const form = document.querySelector("form");
+  const surveySection = document.getElementById("survey");
+  const thankYou = document.getElementById("thankYou");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const q1 = document.getElementById("q1").value;
+    const q2 = document.getElementById("q2").value;
+    const q3 = document.getElementById("q3").value;
+    const q4 = document.getElementById("q4").value;
+
+    if (!q1 || !q2 || !q3 || !q4) return alert("Please answer all questions.");
+
+    surveyData.q1[q1]++;
+    surveyData.q2[q2]++;
+    surveyData.q3[q3]++;
+    surveyData.q4[q4]++;
+
+    localStorage.setItem("surveyResults", JSON.stringify(surveyData));
+
+    // Hide form, show chart
+    surveySection.style.display = "none";
+    thankYou.style.display = "block";
+
+    renderCharts();
+  });
+
+  function renderCharts() {
+    const ctx1 = document.getElementById("chart1").getContext("2d");
+    const ctx2 = document.getElementById("chart2").getContext("2d");
+    const ctx3 = document.getElementById("chart3").getContext("2d");
+    const ctx4 = document.getElementById("chart4").getContext("2d");
+
+    new Chart(ctx1, {
+      type: "pie",
+      data: {
+        labels: ["Yes", "No"],
+        datasets: [{
+          label: "Do you use social media?",
+          data: [surveyData.q1.yes, surveyData.q1.no],
+          backgroundColor: ["#36A2EB", "#FF6384"]
+        }]
+      }
+    });
+
+    new Chart(ctx2, {
+      type: "pie",
+      data: {
+        labels: ["Never", "Rarely", "Sometimes", "Always"],
+        datasets: [{
+          label: "Read Terms & Conditions",
+          data: [
+            surveyData.q2.never,
+            surveyData.q2.rarely,
+            surveyData.q2.sometimes,
+            surveyData.q2.always
+          ],
+          backgroundColor: ["#FFCE56", "#36A2EB", "#9966FF", "#4BC0C0"]
+        }]
+      }
+    });
+
+    new Chart(ctx3, {
+      type: "pie",
+      data: {
+        labels: ["Yes", "No"],
+        datasets: [{
+          label: "Have you seen related ads?",
+          data: [surveyData.q3.yes, surveyData.q3.no],
+          backgroundColor: ["#FF9F40", "#FF6384"]
+        }]
+      }
+    });
+
+    new Chart(ctx4, {
+      type: "pie",
+      data: {
+        labels: ["<1 hr", "1–3 hrs", "3–6 hrs", "6+ hrs"],
+        datasets: [{
+          label: "Daily Use",
+          data: [
+            surveyData.q4.less1,
+            surveyData.q4["1-3"],
+            surveyData.q4["3-6"],
+            surveyData.q4["6+"]
+          ],
+          backgroundColor: ["#8BC34A", "#03A9F4", "#FF9800", "#E91E63"]
+        }]
+      }
+    });
+  }
+</script>
+
+  <script>
+    const tabs = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('.tab-section');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = tab.getAttribute('data-tab');
+
+        // Hide all sections
+        sections.forEach(sec => sec.classList.remove('active'));
+
+        // Show selected
+        document.getElementById(targetId).classList.add('active');
+      });
+    });
+
+    // Show first section by default
+    document.querySelector('.tab-section').classList.add('active');
+  </script>
+
+</div>
+</body>
+</html>
